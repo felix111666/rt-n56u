@@ -37,9 +37,6 @@
 
 #include "rc.h"
 #include "gpio_pins.h"
-#ifdef CONFIG_BOARD_MZ-R13
-int boot_done = 0;  // 启动完成标志，0=未完成，1=完成
-#endif
 
 #define CONSOLE_TERMINAL	"vt100"
 #define INIT_HOME_PATH		"/home/root"
@@ -481,31 +478,6 @@ init_main_loop(void)
 	pid_t shell_pid = 0;
 
 	umask(0000);
-	
-#ifdef CONFIG_BOARD_MZ-R13
-    /* 启动阶段红灯闪烁线程（非阻塞） */
-    if (fork() == 0) {
-        gpio_export(1);    // 红灯
-        gpio_export(37);   // 蓝灯
-        gpio_export(44);   // 白灯
-        gpio_set_dir(1, 1);
-        gpio_set_dir(37, 1);
-        gpio_set_dir(44, 1);
-
-        gpio_write(37, 0); // 蓝灯灭
-        gpio_write(44, 0); // 白灯灭
-
-        while (!boot_done) {
-            gpio_write(1, 1);
-            usleep(300000);
-            gpio_write(1, 0);
-            usleep(300000);
-        }
-
-        gpio_write(1, 0); // 启动完成后红灯灭
-        _exit(0);
-    }
-#endif /* CONFIG_BOARD_MZ-R13 */
 
 	/* Basic initialization */
 	init_time();
