@@ -2,28 +2,23 @@
 
 #define BOARD_PID		"MZ-R13"
 #define BOARD_NAME		"MZ-R13"
-#define CONFIG_BOARD_MZ-R13
 #define BOARD_DESC		"MEIZU MINI R13 Wireless Router"
 #define BOARD_VENDOR_NAME	"Meizu Technology"
 #define BOARD_VENDOR_URL	"https://www.meizu.com/"
 #define BOARD_MODEL_URL		"https://www.meizu.com/"
 #define BOARD_BOOT_TIME		20
 #define BOARD_FLASH_TIME	120
-#undef BOARD_GPIO_BTN_RESET
 #define BOARD_GPIO_BTN_RESET 38
 #undef BOARD_GPIO_BTN_WPS
 #undef  BOARD_GPIO_BTN_ROUTER
 #undef  BOARD_GPIO_LED_ALL
 #undef  BOARD_GPIO_LED_WIFI
 #undef BOARD_GPIO_LED_SW2G
-#undef BOARD_GPIO_LED_POWER
+#define BOARD_GPIO_LED_POWER 44
 #undef  BOARD_GPIO_LED_LAN
 #undef BOARD_GPIO_LED_WAN
 #undef  BOARD_GPIO_LED_USB
 #undef  BOARD_GPIO_LED_ROUTER
-#define BOARD_GPIO_LED_WAN 37
-#define BOARD_GPIO_LED_POWER 44
-#define BOARD_GPIO_LED_WIFI 1
 #undef  BOARD_GPIO_PWR_USB
 #define BOARD_HAS_5G_11AC	0
 #define BOARD_NUM_ANT_5G_TX	0
