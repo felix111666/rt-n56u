@@ -1697,13 +1697,10 @@ usbnet_probe (struct usb_interface *udev, const struct usb_device_id *prod)
 		// heuristic:  "usb%d" for links we know are two-host,
 		// else "eth%d" when there's reasonable doubt.  userspace
 		// can rename the link if it knows better.
-		if ((dev->driver_info->flags & FLAG_ETHER) != 0) {
-            if (is_usb_device(dev)) {
-                 snprintf(net->name, sizeof(net->name), "usb%d", net->ifindex);
-            } else {
-                 snprintf(net->name, sizeof(net->name), "eth%d", net->ifindex);
-            }
-        }
+		if ((dev->driver_info->flags & FLAG_ETHER) != 0 &&
+		    ((dev->driver_info->flags & FLAG_POINTTOPOINT) == 0 ||
+		     (net->dev_addr [0] & 0x02) == 0))
+			strcpy (net->name, "usb%d");
 		
 #endif
 		/* WLAN devices should always be named "wlan%d" */
