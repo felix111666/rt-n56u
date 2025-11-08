@@ -2,6 +2,7 @@
 
 #define BOARD_PID		"MZ-R13"
 #define BOARD_NAME		"MZ-R13"
+#define CONFIG_BOARD_MZ-R13
 #define BOARD_DESC		"MEIZU MINI R13 Wireless Router"
 #define BOARD_VENDOR_NAME	"Meizu Technology"
 #define BOARD_VENDOR_URL	"https://www.meizu.com/"
