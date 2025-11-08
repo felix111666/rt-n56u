@@ -1700,7 +1700,7 @@ usbnet_probe (struct usb_interface *udev, const struct usb_device_id *prod)
 		if ((dev->driver_info->flags & FLAG_ETHER) != 0 &&
 		    ((dev->driver_info->flags & FLAG_POINTTOPOINT) == 0 ||
 		     (net->dev_addr [0] & 0x02) == 0))
-			strcpy (net->name, "usb%d");
+			strcpy (net->name, "eth%d");
 		
 #endif
 		/* WLAN devices should always be named "wlan%d" */
