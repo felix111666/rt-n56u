@@ -37,7 +37,7 @@
 
 #include "rc.h"
 #include "gpio_pins.h"
-#ifdef CONFIG_BOARD_ORAYBOX_MZ-R13
+#ifdef CONFIG_BOARD_MZ-R13
 int boot_done = 0;  // 启动完成标志，0=未完成，1=完成
 #endif
 
