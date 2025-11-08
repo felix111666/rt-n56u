@@ -303,28 +303,5 @@ detect_wan_main(int argc, char *argv[])
 		fclose(fp);
 	}
 
-	#ifdef CONFIG_BOARD_MZ-R13
-    /* ------------------------------------
-     * 网络状态指示灯逻辑 - MZ-R13
-     * 蓝灯：无网络时闪烁
-     * 白灯：有网络时常亮
-     * ------------------------------------ */
-    if (check_wan_connected()) {
-        /* 已联网：蓝灯灭，白灯亮 */
-        gpio_write(37, 0);
-        gpio_write(44, 1);
-    } else {
-        /* 无网络：蓝灯闪烁，白灯灭 */
-        for (int i = 0; i < 3; i++) {
-            gpio_write(37, 1);
-            usleep(300000);
-            gpio_write(37, 0);
-            usleep(300000);
-        }
-        gpio_write(44, 0);
-    }
-    #endif /* CONFIG_BOARD_MZ-R13 */
-
 	return poll_gateway();
 }
-
